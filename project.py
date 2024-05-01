@@ -41,7 +41,7 @@ class Edge :
         self . parent_ = parent
         self . child_ = child
         self . label_ = label
-
+""""""
 def get_labels_attribute(attribute, mushrooms):
     res = []
     for mushroom in mushrooms:
