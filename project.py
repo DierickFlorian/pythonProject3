@@ -41,7 +41,7 @@ class Edge :
         self . parent_ = parent
         self . child_ = child
         self . label_ = label
-""""""
+
 def get_labels_attribute(attribute, mushrooms):
     res = []
     for mushroom in mushrooms:
@@ -49,7 +49,12 @@ def get_labels_attribute(attribute, mushrooms):
             res.append(mushroom.get_attribute(attribute))
     return res
 def get_gain(attribute,mushrooms,entropy):
+
     labels = get_labels_attribute(attribute,mushrooms)
+    for label in labels:
+        for mushroom in mushrooms:
+            if mushroom.get_attribute(attribute) == label:
+                liste.append(mushroom)
 
 
 def build_decision_tree(mushrooms: list[Mushroom]) -> Node:
