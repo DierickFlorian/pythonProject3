@@ -127,14 +127,25 @@ def is_edible(root : Node, mushroom : Mushroom) -> bool: #faire un test de is_ed
     for edge in root.edges_:
         if mushroom.get_attribute(attribute) == edge.label_:
             return is_edible(edge.child_,mushroom)
-def to_bool(root : Node)-> str:
+global stack
+stack = []
+res = ""
+def to_bool(noeud : Node)-> str:
     "fonctions qui affiche l'arbre"
     attribute = noeud.criterion_
     if noeud.is_leaf():
-        print("\t"*compteur,attribute)
+        if noeud.criterion_ == "Yes":
+
+            print(stack.pop())
+
+            for i in stack:
+                print(i)
+            print("\n")
+        else:
+            stack.pop()
     for edge in noeud.edges_:
-        print("\t"*compteur, attribute," : ", edge.label_)
-        display(edge.child_,compteur+1)
+        stack.append(str(attribute) + " : "+ str(edge.label_))
+        to_bool(edge.child_)
 ##################################################################################################################################
 ###Tests####
 #Idée : tester un cas ou edible n'est pas le 1er attribut
